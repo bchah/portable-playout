@@ -17,13 +17,13 @@ You can build once and run multiple instances by creating new directories for ea
 
 Do you have docker and docker-compose installed? Simply run:
 
-docker build -t portable-playout:latest .
+```docker build -t portable-playout:latest .```
 
 You'll want to run this on Linux. If you run it on macOS or Windows you can start streaming and add files, but it won't detect renames or deletes, so plan accordingly.
 
 ## CONFIGURE ME
 
-Edit the variables in your docker-compose file to customize the output. At a minimum, you need to provide the STREAM_URL value.
+Edit the variables in your docker-compose.yml file to customize the output. At a minimum, you need to provide the **STREAM_URL** value.
 
 Uncomment the 'PASSTHROUGH=true' line to stream the encoded video directly. But streamer beware, pre-encoded videos must have a few parameters in common including:
 
@@ -46,7 +46,7 @@ You can (in order of difficulty):
 
 Everything configured? Got at least one video file in your 'play_me' folder? To start the container run:
 
-docker-compose up
+```docker-compose up```
 
 ... and the stream should begin, otherwise an error message of some kind will spit out and the program will stop.
 
