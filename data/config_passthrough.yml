@@ -94,6 +94,7 @@ out:
     mode: stream
     output_param: >-
         -c:v copy
-        -c:a copy
+        -c:a aac
+        -ar -SAMPLERATE-
+        -b:a -AUDIO_BITRATE-k
         -f flv
-        
