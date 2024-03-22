@@ -1,0 +1,112 @@
+general:
+    help_text: X
+    stop_threshold: 11
+    stat_file: .ffp_status
+
+rpc_server:
+    help_text: X
+    enable: false
+    address: 127.0.0.1:7070
+    authorization: X
+
+mail:
+    help_text: X
+    subject: X
+    smtp_server: X
+    starttls: false
+    sender_addr: X@X.org
+    sender_pass: "X"
+    recipient: X
+    mail_level: ERROR
+    interval: 30
+
+logging:
+    help_text: X
+    log_to_file: false
+    backup_count: 7
+    local_time: true
+    timestamp: true
+    path: /var/log/ffplayout/
+    level: INFO
+    ffmpeg_level: error
+    ingest_level: warning
+    detect_silence: false
+
+processing:
+    help_text: X
+    mode: folder
+    audio_only: false
+    copy_audio: false
+    copy_video: true
+    width: 0
+    height: 0
+    aspect: 0
+    fps: 0
+    add_logo: false
+    logo: 
+    logo_scale:
+    logo_opacity: 0
+    logo_filter: overlay=W-w-0:0
+    audio_tracks: 1
+    audio_track_index: -1
+    audio_channels: 2
+    volume: 1
+    custom_filter:
+
+ingest:
+    help_text: X
+    enable: false
+    input_param: X
+    custom_filter:
+
+playlist:
+    help_text: X
+    path: 
+    day_start: 
+    length: 
+    infinit: false
+
+storage:
+    help_text: X
+    path: "/play_me"
+    filler: "/data/filler"
+    extensions:
+        - "mp4"
+        - "mov"
+        - "mkv"
+    shuffle: false
+
+text:
+    help_text: X
+    add_text: false
+    text_from_filename: false
+    fontfile: "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
+    style: "x=(w-tw)/2:y=(h-line_h)*0.9:fontsize=24:fontcolor=#ffffff:box=1:boxcolor=#000000:boxborderw=4"
+    regex: ^.+[/\\](.*)(.mp4|.mkv)$
+
+task:
+    help_text: X
+    enable: false
+    path:
+
+out:
+    help_text: X
+    mode: stream
+    output_param: >-
+        -c:v libx264
+        -crf 23
+        -x264-params keyint=-KEYINT-:min-keyint=-KEYINT-:scenecut=-1
+        -vf scale=-RESOLUTION-
+        -r -FRAMERATE-
+        -maxrate -BITRATE-k
+        -bufsize -BUFSIZE-k
+        -preset faster
+        -tune zerolatency
+        -profile:v Main
+        -level 4.0
+        -c:a aac
+        -ar -SAMPLERATE-
+        -b:a -AUDIO_BITRATE-k
+        -flags +cgop
+        -f flv
+        
