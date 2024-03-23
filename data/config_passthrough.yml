@@ -69,7 +69,7 @@ playlist:
 storage:
     help_text: X
     path: "/play_me"
-    filler: "/data/filler"
+    filler: "/data"
     extensions:
         - "mp4"
         - "mov"
@@ -81,7 +81,7 @@ text:
     add_text: false
     text_from_filename: false
     fontfile: "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
-    style: "x=(w-tw)/2:y=(h-line_h)*0.9:fontsize=24:fontcolor=#ffffff:box=1:boxcolor=#000000:boxborderw=4"
+    style: "X"
     regex: ^.+[/\\](.*)(.mp4|.mkv)$
 
 task:
@@ -98,3 +98,4 @@ out:
         -ar -SAMPLERATE-
         -b:a -AUDIO_BITRATE-k
         -f flv
+        
