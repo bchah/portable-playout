@@ -11,7 +11,6 @@ This comes with zero warranty or promise of support!
 portable-playout is a super simple method of streaming out files from a folder to an RTMP server of your choosing.
 It is basically a wrapper for ffplayout - ffplayout.github.io with some preconfigured scripts and flags.
 The intention is that once you start it up you can just move files in and out of the play_me folder and it will keep streaming them 24/7.
-You can build once and run multiple instances by creating new directories for each 'channel' and duplicating the docker-compose.yml + play_me sidecar folder.
 
 ## BUILD ME
 
@@ -20,6 +19,8 @@ Do you have docker and docker-compose installed? Simply run:
 ```docker build -t portable-playout:latest .```
 
 You'll want to run this on Linux. If you run it on macOS or Windows you can start streaming and add files, but it won't detect renames or deletes, so plan accordingly.
+
+OK, now portable-playout is built.
 
 ## CONFIGURE ME
 
@@ -51,6 +52,11 @@ Everything configured? Got at least one video file in your 'play_me' folder? To 
 ... and the stream should begin, otherwise an error message of some kind will spit out and the program will stop.
 
 Once you are happy with your configuration you could change restart to 'always' in the docker-compose.yml file
+
+## MORE INSTANCES PLEASE
+
+Once built on the system, you can make copies of the docker-compose file + 'play_me' in new directories for each 'channel'.
+You may want to edit the 'container_name' in subsequent docker-compose files if running multiple instances.
 
 ## NEED HELP?
 
