@@ -13,6 +13,16 @@ else
     echo -e "$STREAM_URL" >>/data/config_transcode.yml
     echo -e "$STREAM_URL" >>/data/config_passthrough.yml
     touch /data/has_config
+
+    if [ "$(uname -m)" != "aarch64" ]; then
+        echo "ARM architecture detected!"
+        mv /data/ffplayout_arm.deb /data/ffplayout.deb
+    else
+        echo "x86_64 architecture detected!"
+        mv /data/ffplayout_x64.deb /data/ffplayout.deb
+    fi
+    echo "Installing ffplayout..."
+    apt install -yq /data/ffplayout.deb
 fi
 
 if [ -n "${PASSTHROUGH}" ]; then
