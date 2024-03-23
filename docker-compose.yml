@@ -1,8 +1,8 @@
 version: "3.9"
 services:
   portable-playout:
-    image: beamwell/portable-playout:latest
-    container_name: PortablePlayout
+    image: portable-playout:latest
+    container_name: portable-playout
     restart: no
     environment:
       - STREAM_URL=rtmp://your_rtmp_server:1935/live/your_stream_key
